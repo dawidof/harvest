@@ -1,0 +1,50 @@
+AllCops:
+  TargetRubyVersion: 3.0
+  NewCops: enable
+  SuggestExtensions: false
+
+  Exclude:
+    - 'bin/**/*'
+    - 'db/seeds.rb'
+    - 'db/migrate/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+
+Layout/LineLength:
+  Max: 125
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - db/migrate/*.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - config/routes.rb
+    - spec/**/*.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/*.rb
+
+Naming/RescuedExceptionsVariableName:
+  PreferredName: exception
+
+Style/Documentation:
+  Enabled: false
+
+Style/SlicingWithRange:
+  Enabled: false
+
+Style/OpenStructUse:
+  Enabled: false
+
+Lint/NoReturnInBeginEndBlocks:
+  Enabled: false
+
+Style/RedundantArgument:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
