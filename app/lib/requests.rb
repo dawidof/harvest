@@ -2,14 +2,14 @@
 
 module Requests
   def post_request(url, body: {}, headers: {})
-    Faraday.post(url, body.to_json, with_dafault_headers(headers))
+    Faraday.post(url, body.to_json, with_default_headers(headers))
   end
 
   def get_request(url, body: nil, headers: {})
-    Faraday.get(url, body&.to_json, with_dafault_headers(headers))
+    Faraday.get(url, body&.to_json, with_default_headers(headers))
   end
 
-  def with_dafault_headers(headers)
+  def with_default_headers(headers)
     headers.merge('User-Agent' => ENV['USER_AGENT'])
   end
 end

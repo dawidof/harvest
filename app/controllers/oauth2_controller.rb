@@ -2,7 +2,7 @@
 
 class Oauth2Controller < ApplicationController
   def callback
-    save_token
+    save_token.then { authenticate(_1) }
 
     (redirect_to(dashboard_path) and return) if @error.nil?
   end
@@ -15,5 +15,9 @@ class Oauth2Controller < ApplicationController
   rescue StandardError => exception
     puts exception.inspect
     @error = "Error occurred while receiving tokens from harvest: #{exception.message}"
+  end
+
+  def authenticate(token)
+    session[:access_token] = token.access_token
   end
 end
