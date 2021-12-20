@@ -1,0 +1,28 @@
+<%= form_with(model: user, class: "contents", url: update_path) do |form| %>
+  <div class="shadow overflow-hidden sm:rounded-md">
+    <div class="px-4 py-5 bg-white sm:p-6">
+      <% if user.errors.any? %>
+        <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+          <h2><%= pluralize(user.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+          <ul>
+            <% user.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <% User::DEFAULT_CATEGORIES.each do |category| %>
+        <div class="my-5">
+          <%= form.label category, class: 'block text-sm font-medium text-gray-700' %>
+          <%= form.text_field category, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+        </div>
+      <% end %>
+
+      <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+        <%= form.submit class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer" %>
+      </div>
+    </div>
+  </div>
+<% end %>

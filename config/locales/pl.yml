@@ -1,0 +1,10 @@
+pl:
+  categories:
+    development: Rozwój wewnętrznych narzędzi oraz oprogramowania dla <<COMPANY>>
+    code_review: Audyt i sprawdzanie poprawności tworzonego kodu
+    meeting: Planowanie architektury systemu
+    support: Wsparcie techniczne
+    admin: Administracja serwerami oraz infrastrukturą
+    design: Projektowanie wyglądu oprogramowania
+    project_managment: Zarządzanie projektem
+    research: Analiza narzędzi oraz rozwój oprogramowania

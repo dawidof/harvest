@@ -30,4 +30,12 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  categories:
+    development: Development of internal tools and software for <<COMPANY>>
+    code_review: Audit and validation of the created code
+    meeting: Planning the system architecture
+    support: Technical assistance
+    admin: Administration of servers and infrastructure
+    design: Designing the appearance of the software
+    project_managment: Project management
+    research: Tool analysis and software development

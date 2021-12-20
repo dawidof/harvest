@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get :dashboard, action: 'index'
     get :account, action: 'account'
     get :settings, action: 'settings'
+    patch :update, action: 'update'
     get :logout, action: 'logout' # method: :delete not working without jquery
   end
 
