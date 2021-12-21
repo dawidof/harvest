@@ -9,6 +9,7 @@
   <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
+
 </head>
 
 <body class="dark:bg-gray-9000 bg-gray-200 font-sans">
@@ -54,5 +55,6 @@
     </nav>
   </header>
   <%= yield %>
+  <%= javascript_include_tag 'datepicker.bundle' %>
 </body>
 </html>

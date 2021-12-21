@@ -29,6 +29,6 @@ class DashboardController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(User::DEFAULT_CATEGORY_TASKS.keys)
+    params.require(:user).permit(User::DEFAULT_CATEGORY_TASKS.keys + User::SETTINGS)
   end
 end

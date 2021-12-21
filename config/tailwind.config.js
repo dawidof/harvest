@@ -5,7 +5,8 @@ module.exports = {
   content: [
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
-    './app/views/**/*'
+    './app/views/**/*',
+    './vendor/javascript/*',
   ],  
   theme: {
     extend: {
@@ -15,7 +16,21 @@ module.exports = {
       flexBasis: {
         '1/4': '25%',
         '2/4': '50%',
-      }
+      },
+      safelist: [
+        'w-64',
+        'w-1/2',
+        'rounded-l-lg',
+        'rounded-r-lg',
+        'bg-gray-200',
+        'grid-cols-4',
+        'grid-cols-7',
+        'h-6',
+        'leading-6',
+        'h-9',
+        'leading-9',
+        'shadow-lg'
+      ],
     },
   },
   plugins: [

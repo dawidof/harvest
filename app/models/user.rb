@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   DEFAULT_CATEGORIES = %i[development code_review meeting support admin design project_managment research].freeze
+  SETTINGS = %i[company_name agreement_date].freeze
   DEFAULT_CATEGORY_TASKS = DEFAULT_CATEGORIES.map { [_1, I18n.t("categories.#{_1}")] }.to_h.freeze
 
   has_many :users_tokens, -> { order(id: :desc) }, dependent: :delete_all
@@ -16,6 +17,7 @@ class User < ApplicationRecord
   validates :provider, uniqueness: { scope: :uid }
 
   store :task_categories, accessors: DEFAULT_CATEGORY_TASKS.keys
+  store :settings, accessors: SETTINGS
 
   def assign_user_data(data)
     self.first_name = data['first_name']
