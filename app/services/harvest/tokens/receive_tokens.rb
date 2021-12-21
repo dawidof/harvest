@@ -15,7 +15,6 @@ module Harvest
                       refresh_token: refresh_token,
                       expires_at: expires_at,
                       token_type: token_type,
-                      code: code,
                       scope: scope)
       end
 

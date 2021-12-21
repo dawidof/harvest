@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_21_154401) do
+ActiveRecord::Schema.define(version: 2021_12_21_200139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,15 +18,15 @@ ActiveRecord::Schema.define(version: 2021_12_21_154401) do
   create_table "tokens", force: :cascade do |t|
     t.string "access_token", null: false
     t.string "refresh_token", null: false
-    t.string "code", null: false
     t.string "scope", null: false
     t.string "token_type", null: false
     t.datetime "expires_at", precision: 6, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
     t.index ["access_token"], name: "index_tokens_on_access_token", unique: true
-    t.index ["code"], name: "index_tokens_on_code", unique: true
     t.index ["refresh_token"], name: "index_tokens_on_refresh_token", unique: true
+    t.index ["user_id"], name: "index_tokens_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,16 +47,5 @@ ActiveRecord::Schema.define(version: 2021_12_21_154401) do
     t.index ["uid"], name: "index_users_on_uid"
   end
 
-  create_table "users_tokens", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "token_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["token_id"], name: "index_users_tokens_on_token_id"
-    t.index ["user_id", "token_id"], name: "index_users_tokens_on_user_id_and_token_id", unique: true
-    t.index ["user_id"], name: "index_users_tokens_on_user_id"
-  end
-
-  add_foreign_key "users_tokens", "tokens"
-  add_foreign_key "users_tokens", "users"
+  add_foreign_key "tokens", "users"
 end

@@ -5,8 +5,7 @@ class User < ApplicationRecord
   SETTINGS = %i[company_name agreement_date].freeze
   DEFAULT_CATEGORY_TASKS = DEFAULT_CATEGORIES.map { [_1, I18n.t("categories.#{_1}")] }.to_h.freeze
 
-  has_many :users_tokens, -> { order(id: :desc) }, dependent: :delete_all
-  has_many :tokens, through: :users_tokens, dependent: :delete_all
+  has_many :tokens, -> { order(id: :desc) }, dependent: :delete_all
 
   validates :first_name, presence: true
   validates :last_name, presence: true
