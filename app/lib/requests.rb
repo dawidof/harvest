@@ -6,7 +6,7 @@ module Requests
   end
 
   def get_request(url, body: nil, headers: {})
-    Faraday.get(url, body&.to_json, with_default_headers(headers))
+    Faraday.get(url, body, with_default_headers(headers))
   end
 
   def with_default_headers(headers)

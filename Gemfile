@@ -40,6 +40,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
 
 gem 'rails-i18n', github: 'f6p/rails-i18n', branch: 'rails7-hotfix'
+gem 'spreadsheet'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

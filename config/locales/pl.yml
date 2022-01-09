@@ -1,6 +1,6 @@
 pl:
   categories:
-    development: Rozwój wewnętrznych narzędzi oraz oprogramowania dla <<COMPANY>>
+    development: Rozwój wewnętrznych narzędzi oraz oprogramowania dla <<PROJECT>>
     code_review: Audyt i sprawdzanie poprawności tworzonego kodu
     meeting: Planowanie architektury systemu
     support: Wsparcie techniczne
@@ -8,3 +8,12 @@ pl:
     design: Projektowanie wyglądu oprogramowania
     project_managment: Zarządzanie projektem
     research: Analiza narzędzi oraz rozwój oprogramowania
+  harvest_categories:
+    development: Development
+    code_review: Code review
+    meeting: Meeting
+    support: Support
+    admin: Admin
+    design: Design
+    project_managment: Project Managment
+    research: Research

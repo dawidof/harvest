@@ -1,0 +1,30 @@
+# frozen_string_literal: true
+
+module Reports
+  class Entry
+    def initialize(data, user)
+      @data = data
+      @user = user
+    end
+
+    def project
+      @project ||= @data.dig('project', 'name')
+    end
+
+    def hours
+      @hours ||= @data['hours']
+    end
+
+    def task_name
+      @task_name ||= @data.dig('task', 'name')
+    end
+
+    def notes
+      @notes ||= @data['notes']
+    end
+
+    def task
+      @task ||= @user.public_send(User::HARVEST_CATEGORY_TASKS.fetch(task_name)).gsub('<<PROJECT>>', project)
+    end
+  end
+end

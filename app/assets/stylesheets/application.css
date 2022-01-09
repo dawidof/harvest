@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.category-preview input {
+  border-color: #c3c8d4
+}

@@ -1,0 +1,79 @@
+<div class="lg:col-span-2 col-span-3 bg-indigo-50 space-y-8 px-12">
+  <div class="rounded-md mt-10">
+    <%= form_with model: @dates, url: dashboard_path, method: :get do |date_form| %>
+      <section>
+        <fieldset class="mb-3 bg-white shadow-lg rounded text-gray-600 justify-between flex px-3 py-2">
+          <div>
+
+          <span class="my-5">
+            <label class="text-sm font-medium text-gray-700" for="history_from_date">Z</label>
+            <span class="relative">
+              <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+              </div>
+              <input datepicker datepicker-format="dd.mm.yyyy" type="text" class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" name="history[from_date]" id="history_from_date" value="<%= date_form.object.from_date.strftime('%d.%m.%Y')  %>">
+            </span>
+          </span>
+
+          <span class="my-5">
+            <label class="text-sm font-medium text-gray-700" for="history_to_date">Do</label>
+            <span class="relative">
+              <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+              </div>
+              <input datepicker datepicker-format="dd.mm.yyyy" type="text" class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" name="history[to_date]" id="history_to_date" value="<%= date_form.object.to_date.strftime('%d.%m.%Y')  %>">
+            </span>
+          </div>
+        </span>
+          <button class="submit-button px-4 py-1 rounded-full bg-teal-400 text-white focus:ring focus:outline-none text-md font-semibold transition-colors">
+            Podgląd
+          </button>
+        </fieldset>
+
+      </section>
+    <% end %>
+  </div>
+
+  <%= form_for @history, url: dashboard_path do |history_form| %>
+    <% if @history.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(@history.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+          <% @history.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="rounded-md">
+      <%= history_form.hidden_field :from_date, value: @dates.from_date %>
+      <%= history_form.hidden_field :to_date, value: @dates.to_date %>
+        <section>
+          <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">PODGLĄD RAPORTU</h2>
+          <fieldset class="mb-3 pt-2 bg-white shadow-lg rounded text-gray-600">
+            <% @data.each.with_index do |record, index| %>
+              <div class="h-12 py-2 flex justify-between px-4 category-preview">
+                <input class="basis-3/4" type="text" name="history[entries][<%= index %>][name]" value="<%= record[:name] %>" />
+                <input type="hidden" name="history[entries][<%= index %>][hours]" value="<%= record[:hours] %>" />
+                <span><%= record[:hours] %></span>
+              </div>
+            <% end %>
+            <%- if @data.any? %>
+              <hr />
+              <div class="h-12 py-2 flex justify-between px-4">
+                <span class="basis-3/4"><b>Łączna liczba godzin:</b></span>
+                <span><%= @data.sum { |h| h[:hours] }.round(2) %></span>
+                <%= history_form.hidden_field :total, value: @data.sum { |h| h[:hours] }.round(2) %>
+              </div>
+            <% end %>
+          </fieldset>
+        </section>
+    </div>
+
+    <button class="submit-button px-4 py-3 mt-5 rounded-full bg-teal-500 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors">
+      Zapisz
+    </button>
+  <% end %>
+</div>

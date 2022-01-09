@@ -1,5 +1,7 @@
-<div class="flex flex-row mt-10">
-  <div class="basis-1/4"></div>
-  <div class="basis-2/4">In Progress</div>
-  <div class="basis-1/4"></div>
+<div class="h-screen grid grid-cols-3">
+  <div class="col-span-1 bg-white lg:block hidden">
+    <h1 class="py-6 border-b-2 text-xl text-gray-600 px-8">History in progress</h1>
+  </div>
+
+  <%= render 'current_period' %>
 </div>

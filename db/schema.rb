@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_21_200139) do
+ActiveRecord::Schema.define(version: 2022_01_09_082143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "histories", force: :cascade do |t|
+    t.datetime "from_date", precision: 6, null: false
+    t.datetime "to_date", precision: 6, null: false
+    t.jsonb "data", default: {}, null: false
+    t.decimal "total", precision: 6, scale: 2, default: "0.0", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_histories_on_user_id"
+  end
 
   create_table "tokens", force: :cascade do |t|
     t.string "access_token", null: false
@@ -47,5 +58,6 @@ ActiveRecord::Schema.define(version: 2021_12_21_200139) do
     t.index ["uid"], name: "index_users_on_uid"
   end
 
+  add_foreign_key "histories", "users"
   add_foreign_key "tokens", "users"
 end
