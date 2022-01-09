@@ -12,6 +12,7 @@ module Harvest
         # puts JSON.pretty_generate(user_info)
         user = User.find_or_initialize_by(provider: 'harvest', uid: user_info['id'])
         user.assign_user_data(user_info)
+        user.settings = { uid: user_info['id'] }
         user.save!
         user
       end
