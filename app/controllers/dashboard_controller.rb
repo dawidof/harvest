@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
   before_action :load_dates, only: %i[index create]
 
   def index
-    redirect_to settings_path if current_user.company_name.empty? || current_user.agreement_date.empty?
+    redirect_to settings_path if current_user.company_name.blank? || current_user.agreement_date.blank?
   end
 
   def create
