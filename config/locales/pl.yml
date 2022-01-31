@@ -7,6 +7,7 @@ pl:
     admin: Administracja serwerami oraz infrastrukturą
     design: Projektowanie wyglądu oprogramowania
     project_managment: Zarządzanie projektem
+    project_tasks: Zadanie projektowe
     research: Analiza narzędzi oraz rozwój oprogramowania
   harvest_categories:
     development: Development
@@ -16,4 +17,5 @@ pl:
     admin: Admin
     design: Design
     project_managment: Project Managment
+    project_tasks: Project tasks
     research: Research

@@ -38,6 +38,7 @@ en:
     admin: Administration of servers and infrastructure
     design: Designing the appearance of the software
     project_managment: Project management
+    project_tasks: Project tasks
     research: Tool analysis and software development
   harvest_categories:
     development: Development
@@ -47,4 +48,5 @@ en:
     admin: Admin
     design: Design
     project_managment: Project Managment
+    project_tasks: Project tasks
     research: Research
