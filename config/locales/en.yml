@@ -31,6 +31,7 @@
 
 en:
   categories:
+    duty: Duty
     development: Development of internal tools and software for <<PROJECT>>
     code_review: Audit and validation of the created code
     meeting: Planning the system architecture
@@ -41,6 +42,7 @@ en:
     project_tasks: Project tasks
     research: Tool analysis and software development
   harvest_categories:
+    duty: Duty
     development: Development
     code_review: Code review
     meeting: Meeting

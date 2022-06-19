@@ -1,5 +1,6 @@
 pl:
   categories:
+    duty: Duty
     development: Rozwój wewnętrznych narzędzi oraz oprogramowania dla <<PROJECT>>
     code_review: Audyt i sprawdzanie poprawności tworzonego kodu
     meeting: Planowanie architektury systemu
@@ -10,6 +11,7 @@ pl:
     project_tasks: Zadanie projektowe
     research: Analiza narzędzi oraz rozwój oprogramowania
   harvest_categories:
+    duty: Duty
     development: Development
     code_review: Code review
     meeting: Meeting
