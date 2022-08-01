@@ -41,7 +41,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
-gem 'rails-i18n', github: 'f6p/rails-i18n', branch: 'rails7-hotfix'
+gem 'rails-i18n'
 gem 'spreadsheet'
 
 # Use Sass to process CSS
@@ -59,7 +59,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'rubocop', '1.23.0'
+  gem 'rubocop', '1.32.0'
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 
