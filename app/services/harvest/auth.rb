@@ -3,7 +3,8 @@
 module Harvest
   class Auth < Base
     def client
-      @client ||= OAuth2::Client.new(*SEC.harvest,
+      @client ||= OAuth2::Client.new(SEC.harvest.client_id,
+                                     SEC.harvest.secret_id,
                                      site: site_url,
                                      authorize_url: authorize_url)
     end
