@@ -68,4 +68,17 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem 'capistrano'
+  gem 'capistrano3-puma', '5.2.0' # , github: "seuros/capistrano-puma"
+  gem 'capistrano-bundler'
+  gem 'capistrano-cookbook', path: '/Users/dmytro/Sites/capistrano-cookbook-5.0.2'
+  gem 'capistrano-postgresql', '~> 6.2'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-sidekiq'
+  gem 'sshkit-sudo'
+
+  gem 'bcrypt_pbkdf'
+  gem 'ed25519'
 end
