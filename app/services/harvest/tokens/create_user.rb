@@ -10,9 +10,16 @@ module Harvest
         user_info = show_my_info(token)
 
         # puts JSON.pretty_generate(user_info)
-        user = User.find_or_initialize_by(provider: 'harvest', uid: user_info['id'])
-        user.assign_user_data(user_info)
-        user.settings = { uid: user_info['id'] }
+        user = User.find_or_initialize_by(provider: 'harvest', uid: user_info['id']) do |u|
+          u.assign_user_data(user_info)
+          u.settings = { uid: user_info['id'] }
+        end
+        user.save!
+
+        User.default_categories.each do |legacy_title, title|
+          user.assign_category_by_title(legacy_title: legacy_title, title: title)
+        end
+
         user.save!
         user
       end

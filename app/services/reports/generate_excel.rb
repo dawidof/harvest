@@ -6,6 +6,7 @@ module Reports
 
     param :data
     param :user
+    param :start_date, default: proc { Time.now }
 
     def call
       update_header
@@ -76,13 +77,11 @@ module Reports
     end
 
     def month
-      # TODO: change
-      MONTH_NAMES[Time.now.month - 1]
+      MONTH_NAMES[start_date.month - 1]
     end
 
     def year
-      # TODO: change
-      Time.now.year
+      start_date.year
     end
   end
 end

@@ -24,7 +24,7 @@ module Reports
     end
 
     def task
-      @task ||= @user.public_send(User::HARVEST_CATEGORY_TASKS.fetch(task_name)).gsub('<<PROJECT>>', project)
+      @task ||= @user.category_by_title(task_name).gsub('<<PROJECT>>', project)
     end
   end
 end

@@ -28,6 +28,7 @@ module Reports
         output[entry.task] ||= 0
         output[entry.task] += entry.hours
       end
+
       data.transform_values { _1.round(2) }.map { |title, hours| { name: title, hours: hours } }
     end
 

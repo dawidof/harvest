@@ -10,6 +10,6 @@ module Requests
   end
 
   def with_default_headers(headers)
-    headers.merge('User-Agent' => ENV['USER_AGENT'])
+    headers.merge('User-Agent' => SEC.user_agent)
   end
 end

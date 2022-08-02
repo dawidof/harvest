@@ -6,6 +6,7 @@ AllCops:
   Exclude:
     - 'bin/**/*'
     - 'db/seeds.rb'
+    - 'db/*schema.rb'
     - 'db/migrate/*'
     - 'tmp/**/*'
     - 'vendor/**/*'

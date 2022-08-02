@@ -7,11 +7,11 @@ module Harvest
     private
 
     def client_id
-      ENV['HARVEST_CLIENT_ID']
+      SEC.harvest.client_id
     end
 
     def secret_id
-      ENV['HARVEST_SECRET_ID']
+      SEC.harvest.secret_id
     end
   end
 end

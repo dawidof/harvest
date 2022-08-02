@@ -1,0 +1,1 @@
+SEC = Rails.application.credentials

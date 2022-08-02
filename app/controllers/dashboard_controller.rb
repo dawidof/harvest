@@ -6,17 +6,24 @@ class DashboardController < ApplicationController
   before_action :load_dates, only: %i[index create]
 
   def index
+    @histories = current_user.histories
     redirect_to settings_path if current_user.company_name.blank? || current_user.agreement_date.blank?
   end
 
   def create
     @history.user = current_user
     if @history.save
-      file = Reports::GenerateExcel.call(@history.data.map(&:deep_symbolize_keys), current_user)
+      file = Reports::GenerateExcel.call(@history.data.map(&:deep_symbolize_keys), current_user, @history.to_date)
       send_data file.read, filename: file.original_filename
     else
       render :index
     end
+  end
+
+  def save_history
+    @history = History.find(params['history']['id'])
+    file = Reports::GenerateExcel.call(@history.data.map(&:deep_symbolize_keys), current_user, @history.to_date)
+    send_data file.read, filename: file.original_filename
   end
 
   def account; end
@@ -31,6 +38,11 @@ class DashboardController < ApplicationController
     end
   end
 
+  def history
+    @histories = current_user.histories
+    @history = History.find(params[:id])
+  end
+
   def logout
     session.delete(:access_token)
     redirect_to root_path, notice: 'Logged out!'
@@ -39,7 +51,7 @@ class DashboardController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(User::DEFAULT_CATEGORY_TASKS.keys + User::SETTINGS)
+    params.require(:user).permit(*User::SETTINGS, categories_attributes: %i[id legacy_title title])
   end
 
   def date_params

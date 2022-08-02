@@ -35,3 +35,5 @@
 
 .env
 *local
+
+/config/credentials/production.key

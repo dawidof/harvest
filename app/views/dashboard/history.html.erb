@@ -3,7 +3,9 @@
     <h1 class="py-6 border-b-2 text-xl text-gray-600 px-8">History</h1>
     <ul class="border-b-0">
       <%- @histories.each do |history| %>
-        <li class="grid grid-cols-6 gap-2 border-b-1 border-b">
+        <% classes = "grid grid-cols-6 gap-2 border-b-1 border-b" %>
+        <% classes += ' bg-gray-200' if history.id == @history.id %>
+        <li class="<%= classes %>">
           <%= link_to history_path(history), class: "flex flex-col col-span-6 p-2 px-8" do %>
             <span class="text-gray-600 text-md font-semi-bold"><%= history.from_date.strftime('%F') %> - <%= history.to_date.strftime('%F') %></span>
             <span class="text-gray-400 text-sm inline-block pt-2"><%= history.created_at.strftime('%F') %></span>
@@ -13,5 +15,5 @@
     </ul>
   </div>
 
-  <%= render 'current_period' %>
+  <%= render 'current_history' %>
 </div>

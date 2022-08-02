@@ -83,4 +83,4 @@ production:
   <<: *default
   database: harvest_production
   username: harvest
-  password: <%= ENV["HARVEST_DATABASE_PASSWORD"] %>
+  password: <%= SEC.database_password %>

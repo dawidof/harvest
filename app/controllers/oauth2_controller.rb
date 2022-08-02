@@ -11,6 +11,7 @@ class Oauth2Controller < ApplicationController
 
   def save_token
     data = params.slice(:code, :scope).values
+
     Harvest::RequestNewTokens.call(*data)
   rescue StandardError => exception
     puts exception.inspect
