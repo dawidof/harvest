@@ -43,7 +43,7 @@ module Harvest
     config.generators.system_tests = nil
 
     config.active_record.yaml_column_permitted_classes =
-      %w[String Integer NilClass Float Time Date FalseClass Hash Array DateTime TrueClass BigDecimal
+      %w[String Integer NilClass Float Time Date FalseClass Symbol Hash Array DateTime TrueClass BigDecimal
          ActiveSupport::TimeWithZone ActiveSupport::TimeZone ActiveSupport::HashWithIndifferentAccess]
   end
 end
